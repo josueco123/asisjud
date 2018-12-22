@@ -16,6 +16,7 @@
                     <p>{!! $proceso->demandante !!}</p>
                     <p>{!! $proceso->demandado !!}</p>
                     <p>{!! $proceso->fecha !!}</p>
+                    <p>{!! $proceso->descripcion !!}</p>
                     <p>{!! $juzgado->nombre !!}</p>
                     <form class="form-horizontal" method="post">
                     

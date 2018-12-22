@@ -22,7 +22,7 @@ window.$ = window.jQuery = require('jquery');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
-Vue.component('proceso', require('./components/ProcesosNotificaion.vue'));
+Vue.component('notification', require('./components/ProcesosNotificaion.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -37,7 +37,7 @@ const app = new Vue({
     },
     created(){
         axios.post('./notification/get').then(response => {
-            this.procesos = response.data;
+            this.notification = response.data;
             console.log(response.data);
         });
         

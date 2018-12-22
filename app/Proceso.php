@@ -15,7 +15,8 @@ class Proceso extends Model
 
     public function userdatos()
     {
-        return $this->belongsToMany('App\Userdato', 'userdato_procesos');
+        return $this->belongsToMany('App\Userdato', 'userdato_procesos')
+        ->withPivot('id', 'userdato_id','proceso_id');
         // Si el nombre de la tabla es diferente a lo predeterminado o el ID de la tabla tiene otro nombre.
         //return $this->belongsToMany('App\User', 'user_roles', 'role_id', 'user_id');
     }

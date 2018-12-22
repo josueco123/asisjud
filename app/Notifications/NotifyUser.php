@@ -5,6 +5,7 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Proceso;
 
@@ -51,9 +52,10 @@ class NotifyUser extends Notification
 
     public function toBroadcast($notifiable)
     {
-        return [
-            'proceso' => $this->proceso
-        ];
+        return new BroadcastMessage([
+            'proceso' => $this->proceso,
+            'user'=> auth()->user()
+        ]);
     }
 
     public function toMail($notifiable)

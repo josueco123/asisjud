@@ -39,8 +39,6 @@ class UserdatosController extends Controller
     public function store(UserdatosFormRequest $request)
     {
         //
-        /* */
-        $slug = uniqid();
         $iduser = $request->get('idusuario');
         $userdato = new Userdato(array(
             'apellido'=> $request->get('apellido'),

@@ -13,30 +13,25 @@
                         </div>
                     @endif
                     
-                @if ($userdato->procesos->isEmpty())
+                @if ($users->isEmpty())
                     <p> No hay Procesos.</p>
                 @else
                     <table class="table">
                         <thead>
                             <tr>
                             <th></th>
-                                <th>Radicacion</th>
-                                <th>Demandante</th>
-                                <th>Demandado</th>
-                                <th>Descripcion</th>
-                                <th>Fecha</th>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>id user</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($userdato->procesos as $proceso)
+                            @foreach($users as $user)
                                 <tr>
-                                <td> <a href="{!! action('ProcesosController@show',$proceso->id) !!}" > Ver </a></td>
-                                    <td>{!! $proceso->radicacion !!}  </td>
-                                    <td>{!! $proceso->demandante !!}</td>
-                                    <td>{!! $proceso->demandado  !!}</td>
-                                    <td>{!! $proceso->descripcion  !!}</td>
-                                    <td>{!! $proceso->fecha  !!}</td>
-
+                                <td>  Ver </td>
+                                    <td>{!! $user->id !!}  </td>
+                                    <td>{!! $user->name !!}  </td>
+                                    
                                 </tr>
                             @endforeach
                         </tbody>

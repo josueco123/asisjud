@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://localhost/laravelapps/asistentejudicial/node_modules/push.js/bin/push.min.js" ></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +19,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script>
+        window.laravel = {!! json_encode ([
+            'csrfToken' => csrf_token(),
+        ])!!};
+    </script>
+
 </head>
 <body>
     <div id="app">
@@ -54,7 +62,8 @@
                             @endif
                         @else
                         <!--<notification v-bind:notifications="notifications"></notification>-->
-                        <proceso v-bind:procesos="procesos"></proceso>
+                        <!--<proceso v-bind:procesos="procesos" ></proceso>-->
+                        <notification :userid="{{auth()->id()}}" :unreads="{{auth()->user()->unreadNotifications }}" ></notification>
                         
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

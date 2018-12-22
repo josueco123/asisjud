@@ -15,10 +15,13 @@ class NotificationController extends Controller
     }
 
     public function markAsRead(Request $r){
-        auth()->user()->unreadNotifications->find($r-not_id)->markAsRead();
+        auth()->user()->unreadNotifications->find($r->get('not_id'))->markAsRead();
+        
     }
 
-    public function readProceso($proceso_id){
+    public function readProceso($proceso_id,$not_id){
+        
+        auth()->user()->unreadNotifications->find($not_id)->markAsRead();
         
         $proceso = Proceso::find($proceso_id);
         $juzgado = $proceso->juzgado;

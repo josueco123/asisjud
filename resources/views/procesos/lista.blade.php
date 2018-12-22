@@ -4,7 +4,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2> Procesos </h2>
-                </div>     
+                </div>  
+                <script>
+                    Push.create('Hello World!')
+                </script>   
             
                 <div class="card-body">
                     @if (session('status'))

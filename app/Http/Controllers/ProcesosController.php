@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Proceso;
 use App\Userdato;
 use Auth;
@@ -31,6 +32,7 @@ class ProcesosController extends Controller
     public function create()
     {
         //
+        return view('procesos.agregarproceso');
     }
 
     /**
@@ -42,6 +44,24 @@ class ProcesosController extends Controller
     public function store(Request $request)
     {
         //
+        $proceso = new Proceso(array(
+            'radicacion'=>$request->get('radicacion'),
+            'demandante'=>$request->get('demandante'),
+            'demandado'=>$request->get('demandado'),
+            'descripcion'=>$request->get('descripcion'),
+            'fecha'=>$request->get('fecha'),
+            'idjuzgado'=>$request->get('idjuzado')
+
+        ));
+
+        $this->procesoexiste($request->get('radicacion'));
+
+        //$radicacion = $request->get('radicacion');
+        $proceso->save();
+        
+        return redirect('/agregarproceso')->with('status','proceso agragado');
+       //$procesos2 = Proceso::where('procesos.radicacion','=',$radicacion)->get(); 
+      
     }
 
     /**
@@ -97,10 +117,10 @@ class ProcesosController extends Controller
         //
     }
 
-    public function juzgadounolaboral($id){
+    public function buscarporjuzgado($id){
 
         $procesos = Proceso::where('procesos.idjuzgado','=',$id)->get();
-        return view('procesos.juzgadounolaboral',compact('procesos')); 
+        return view('procesos.buscarporjuzgado',compact('procesos')); 
     }
 
     public function juzgadofecha(){
@@ -134,10 +154,44 @@ class ProcesosController extends Controller
         return redirect('/procesos')->with('status','Proceso añadido');
     }
 
-    public function userprocesos($id){
+    public function userprocesos(){
 
-        $userdato = Userdato::whereId($id)->firstOrFail();
+        $id = auth()->user()->id;
+        $userdato = Userdato::where('userdatos.idusuario','=',$id)->firstOrFail();
 
         return view('procesos.misprocesos',compact('userdato'));
+    }
+
+    public function radicacionproceso(){
+        return view('procesos.buscaradicacion');
+    }
+
+    public function buscarradicacion(Request $request){
+        
+        $rad = $request->get('radicacion');
+
+        $procesos = Proceso::where('procesos.radicacion','=',$rad)->get();
+        //$juzgado = $proceso->juzgado;
+        return view('procesos.lista',compact('procesos'));  
+
+    }
+
+    public function procesoexiste($radicacion){
+           
+        $proceso = Proceso::where('procesos.radicacion','=',$radicacion)
+        ->orderBy('created_at','desc')
+        ->firstOrFail();
+
+        $users = User::join('userdatos','users.id','=','userdatos.idusuario')
+        ->join('userdato_procesos','userdatos.id', '=','userdato_procesos.userdato_id')
+        ->join('procesos','procesos.id','=', 'userdato_procesos.proceso_id')
+        ->where('procesos.radicacion','=',$radicacion)
+        ->select('users.*')->get();
+ 
+        foreach ($users as $user) {
+            $user->notify(new NotifyUser($proceso));
+        }
+
+
     }
 }

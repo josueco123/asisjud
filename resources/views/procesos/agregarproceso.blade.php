@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Actulizar Datos</div>
+                <div class="card-header">Agregar Proceso</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -21,42 +21,41 @@
                     
             <input type="hidden" name="_token" value="{!! csrf_token()!!}">
                 <fieldset>
-                <div class="form-group">
-                        <label for="name" class="col-lg-2 control-label">Nombre</label>
+                    <div class="form-group">
+                        <label for="radicacion" class="col-lg-2 control-label">Radicacion</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="name" value="{!!  Auth::user()->name; !!}" name="name">
+                            <input type="text" class="form-control" id="radicacion" placeholder="" name="radicacion">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="apellido" class="col-lg-2 control-label">Apellido</label>
+                        <label for="demandante" class="col-lg-2 control-label">Demandante</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="apellido" placeholder="" name="apellido">
+                            <input type="text" class="form-control" id="demandante" name="demandante">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="col-lg-2 control-label">Nombre</label>
+                        <label for="demandado" class="col-lg-2 control-label">Demandado</label>
                         <div class="col-lg-10">
-                            <input type="email" class="form-control" id="email" value="{!!  Auth::user()->email; !!}" name="email">
+                            <input type="text" class="form-control" id="demandado" placeholder="" name="demandado">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="cedula" class="col-lg-2 control-label">Cedula</label>
+                        <label for="descripcion" class="col-lg-2 control-label">descripcion</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="cedula" placeholder="" name="cedula">
+                            <input type="text" class="form-control" id="descripcion" placeholder="" name="descripcion">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="celular" class="col-lg-2 control-label">Celular</label>
+                        <label for="fecha" class="col-lg-2 control-label">Fecha</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="celular" placeholder="" name="celular">
+                            <input type="date" class="form-control" id="fecha" placeholder="" name="fecha">
                         </div>
-                    </div>
+                        </div>
                     <div class="form-group">
-                        <label for="direccion" class="col-lg-2 control-label">Direccion</label>
+                        <label for="idjuzgado" class="col-lg-2 control-label">Juzgado</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="direccion" placeholder="" name="direccion">
+                            <input type="text" class="form-control" id="idjuzado" placeholder="" name="idjuzado">
                         </div>
-                        <input type="hidden" id="idusuario" name="idusuario" value="{!!  Auth::user()->id; !!}">
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
