@@ -1,15 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 
     <div class="container col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+            @if ($procesos->isEmpty())
+                    <p> No hay Procesos.</p>
+                @else
                 <div class="panel-heading">
-                    <h2> Procesos </h2>
+                
+                    <h2 class="text-center"> Procesos {!! $juzgado->nombre !!} </h2>
                 </div>     
 
-                @if ($procesos->isEmpty())
-                    <p> No hay Proceso.</p>
-                @else
+                
+                <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
@@ -25,15 +28,15 @@
                                 <tr>
                                     <td><a href="{!! action('ProcesosController@show',$proceso->id) !!}" >
                                     {!! $proceso->radicacion !!} </a> </td>
-                                    <td>{!! $proceso->demandante !!}</td>
+                                    <td>{!! $proceso->demandante !!}  </td>
                                     <td>{!! $proceso->demandado  !!}</td>
                                     <td>{!! $proceso->descripcion  !!}</td>
                                     <td>{!! $proceso->fecha  !!}</td>
-                        
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                </div>
                 @endif
             </div>
     </div>

@@ -1,13 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 
 <div class="container col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+            <div class="card">
                 <div class="panel-heading">
-                    <h2> Procesos Juzgados Primero Laborales </h2>
+                    <h2 class="text-center">  Buscar Procesos </h2>
                 </div> 
-
-                <form class="form-horizontal" method="post">
+                <div class="card-body">
+               
+                <form method="post">
                 
                 @foreach($errors->all() as $errors)
                 <p class="alert alert-danger">{{$errors}}</p>
@@ -15,32 +17,46 @@
 
                  <input type="hidden" name="_token" value="{!! csrf_token()!!}">
                  <fieldset>
-                    <legend>Enviar un nuevo ticket</legend>
+
                     <div class="form-group">
-                        <label for="fecha" class="col-lg-2 control-label">Fecha</label>
-                        <div class="col-lg-10">
+                        <label for="fecha" >Fecha</label>
+                        
                             <input type="date" class="form-control" id="fecha" placeholder="" name="fecha">
+                        
                         </div>
+                        
+                        <div class="form-group">
+                        <label for="tipojuzgado" >Tipo de Juzgado</label>
+                            <select class="form-control" id="tipojuzgado" name="tipojuzgado" >
+                            <option value="">Seleciona</option>
+                                <option value="1">Civiles Municipales</option>
+                                <option value="2">Laborales</option>
+                                <option value="3">Famila</option>
+                                <option value="4">Ejecucion</option>
+                            </select>
+    
+                        </div>
+                      
+
+                        <div class="form-group">
+                        <label for="juzgado" >Selecione el Juzgado</label>
+                            <select class="form-control" id="juzgado" name="juzgado">
+                            </select>
+    
                         </div>
 
                         <div class="form-group">
-                        <div class="form-group">
-                        <label for="id" class="col-lg-2 control-label">Id</label>
-                        <div class="col-lg-10">
-                            <input type="text" class="form-control" id="id" placeholder="" name="id">
-                        </div>
-                        </div>
-
-                        <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2">
+                        
                             <button class="btn btn-default">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </div>
-                    </div>
+
+                        
+                    
                 </fieldset>
                  </form>
-
+</div>
             </div>
-
+</div>
 </div>
 @endsection﻿

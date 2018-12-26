@@ -57759,7 +57759,7 @@ var render = function() {
   return _c("div", { staticClass: "wrap" }, [
     _c("a", { staticClass: "dropdown-item", attrs: { href: _vm.procesoUrl } }, [
       _vm._v(
-        "\n       actualizacion estado " +
+        "\n       Actualizacion Estado " +
           _vm._s(_vm.unread.data.proceso.radicacion) +
           "\n    "
       )
@@ -57784,58 +57784,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "li",
-    { staticClass: "nav-item dropdown", attrs: { id: "markasared" } },
-    [
+  return _c("li", { staticClass: "nav-item dropdown" }, [
+    _c(
+      "a",
+      {
+        staticClass: "dropdown-toggle",
+        attrs: {
+          "data-toggle": "dropdown",
+          role: "button",
+          "aria-expanded": "false"
+        }
+      },
+      [
+        _vm._v("\n        Notificaciones "),
+        _c(
+          "span",
+          {
+            staticClass: "badge badge-pill badge-secondary",
+            attrs: { id: "count-notification" }
+          },
+          [_vm._v("\n        " + _vm._s(_vm.unreadNotifications.length))]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c("ul", { staticClass: "dropdown-menu", attrs: { role: "menu" } }, [
       _c(
-        "a",
-        {
-          staticClass: "nav-link dropdown-toggle",
-          attrs: {
-            id: "navbarDropdown",
-            href: "#",
-            role: "button",
-            "data-toggle": "dropdown",
-            "aria-haspopup": "true",
-            "aria-expanded": "false"
-          }
-        },
-        [
-          _vm._v("\n        Notificaciones "),
-          _c(
-            "span",
-            {
-              staticClass: "badge badge-pill badge-secondary",
-              attrs: { id: "count-notification" }
-            },
-            [_vm._v("\n        " + _vm._s(_vm.unreadNotifications.length))]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "dropdown-menu dropdown-menu-right",
-          attrs: { "aria-labelledby": "navbarDropdown" }
-        },
-        [
-          _c(
-            "li",
-            { staticStyle: { "background-color": "lightgray" } },
-            _vm._l(_vm.unreadNotifications, function(unread) {
-              return _c("notification-item", {
-                key: unread.id,
-                attrs: { unread: unread }
-              })
-            }),
-            1
-          )
-        ]
+        "li",
+        _vm._l(_vm.unreadNotifications, function(unread) {
+          return _c("notification-item", {
+            key: unread.id,
+            attrs: { unread: unread }
+          })
+        }),
+        1
       )
-    ]
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

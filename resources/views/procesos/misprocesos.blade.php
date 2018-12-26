@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
     <div class="container col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2> Procesos </h2>
+                    <h2 class="text-center"> Procesos </h2>
                 </div>     
 
                 <div class="card-body">
@@ -14,8 +14,9 @@
                     @endif
                     
                 @if ($userdato->procesos->isEmpty())
-                    <p> No hay Procesos.</p>
+                    <p> No tienes Procesos registrados.</p>
                 @else
+                <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
@@ -41,6 +42,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>    
                 @endif
             </div>
     </div>

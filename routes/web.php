@@ -44,4 +44,6 @@ Route::post('/radicacion','ProcesosController@buscarradicacion');
 Route::get('/agregarproceso','ProcesosController@create');
 Route::post('/agregarproceso','ProcesosController@store');
 
+
+
 //Route::get('/notify','ProcesosController@procesoexiste');

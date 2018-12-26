@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
     <div class="container col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -16,7 +16,8 @@
                 @if ($procesos->isEmpty())
                     <p> No hay Procesos.</p>
                 @else
-                    <table class="table">
+                <div class="table-responsive">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                             <th></th>
@@ -41,6 +42,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
                 @endif
             </div>
     </div>

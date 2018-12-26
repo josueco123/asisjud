@@ -1,17 +1,17 @@
 <template>
-    <li class="nav-item dropdown" id="markasared">
-        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <li class="nav-item dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             Notificaciones <span class="badge badge-pill badge-secondary" id="count-notification">
             {{ unreadNotifications.length }}</span>
         </a>
 
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <ul class="dropdown-menu" role="menu">
                                     
-          <li style="background-color: lightgray">
+          <li>
             <notification-item v-for="unread in unreadNotifications" :unread="unread" :key="unread.id"> </notification-item>
           </li>
                       
-        </div>
+        </ul>
     </li>    
 </template>
 <script>

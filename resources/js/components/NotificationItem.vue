@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
         <a class="dropdown-item" :href="procesoUrl" >
-           actualizacion estado {{unread.data.proceso.radicacion}}
+           Actualizacion Estado {{unread.data.proceso.radicacion}}
         </a>
 
     </div>

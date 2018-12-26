@@ -8,6 +8,7 @@ use App\Proceso;
 use App\Userdato;
 use Auth;
 use App\User;
+use App\Juzgado;
 use App\Notifications\NotifyUser;
 
 class ProcesosController extends Controller
@@ -124,17 +125,19 @@ class ProcesosController extends Controller
     }
 
     public function juzgadofecha(){
+        
         return view('procesos.juzgadofecha'); 
     }
 
     public function buscarjuzgadofecha(Request $request){
 
         $date = $request->get('fecha');
-        $id = $request->get('id');
+        $id = $request->get('juzgado');
         $procesos = Proceso::where('procesos.idjuzgado','=',$id)
         ->where('procesos.fecha','=',$date)
         ->get();
-        return view('procesos.fechaprocesos',compact('procesos')); 
+        $juzgado = Juzgado::find($id);
+        return view('procesos.fechaprocesos',compact('procesos','juzgado')); 
     }
     //{!! action('ProcesosController@buscarjuzgadofecha',)}
 
