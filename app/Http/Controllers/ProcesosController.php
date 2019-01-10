@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\JuzgadoFormRequest;
+use App\Http\Requests\RadicacionFormRequest;
 use App\Proceso;
 use App\Userdato;
 use Auth;
@@ -129,7 +131,7 @@ class ProcesosController extends Controller
         return view('procesos.juzgadofecha'); 
     }
 
-    public function buscarjuzgadofecha(Request $request){
+    public function buscarjuzgadofecha(JuzgadoFormRequest $request){
 
         $date = $request->get('fecha');
         $id = $request->get('juzgado');
@@ -169,7 +171,7 @@ class ProcesosController extends Controller
         return view('procesos.buscaradicacion');
     }
 
-    public function buscarradicacion(Request $request){
+    public function buscarradicacion(RadicacionFormRequest $request){
         
         $rad = $request->get('radicacion');
 

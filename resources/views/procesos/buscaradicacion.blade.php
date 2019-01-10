@@ -19,8 +19,9 @@
                  <fieldset>
                     
                     <div class="form-group">
-                        <label for="radicacion" >Radicacion</label>
-                            <input type="text" class="form-control" id="radicacion" placeholder="" name="radicacion">
+                        <label for="radicacion"  >Radicación</label>
+                            <input type="number"s class="form-control" id="radicacion" placeholder="" name="radicacion" aria-describedby="radicacionHelp">
+                            <small id="radicacionHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
 
                         <div class="form-group">

@@ -23,8 +23,12 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/about', 'UserdatosController@create')->middleware('auth');
-Route::post('/about', 'UserdatosController@store')->middleware('auth');
+Route::get('/createdata', 'UserdatosController@create')->middleware('auth');
+Route::post('/createdata', 'UserdatosController@store')->middleware('auth');
+
+Route::get('/updateuser/{id?}', 'UserdatosController@edit')->middleware('auth');
+Route::post('/updateuser/{id?}', 'UserdatosController@update')->middleware('auth');
+
 Route::get('/procesos', 'ProcesosController@index')->middleware('auth');
 Route::get('/procesos/{id?}', 'ProcesosController@show')->middleware('auth');
 Route::post('/procesos/{id?}', 'ProcesosController@anadirproceso')->middleware('auth');

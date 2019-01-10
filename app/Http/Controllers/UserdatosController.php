@@ -27,7 +27,7 @@ class UserdatosController extends Controller
     public function create()
     {
         //
-        return view ('updateuser');
+        return view ('createuser');
     }
 
     /**
@@ -75,6 +75,7 @@ class UserdatosController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -86,6 +87,8 @@ class UserdatosController extends Controller
     public function edit($id)
     {
         //
+        $userdato = Userdato::where('userdatos.idusuario','=',$id)->firstOrFail();
+        return view ('updateuser', compact('userdato'));
     }
 
     /**
@@ -95,9 +98,25 @@ class UserdatosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserdatosFormRequest $request)
     {
         //
+        $iduser = $request->get('idusuario');
+
+        $user = User::find($iduser);
+        $userdato = Userdato::where('userdatos.idusuario','=',$iduser)->firstOrFail();
+        $userdato->apellido = $request->get('apellido');
+        $userdato->cedula = $request->get('cedula');
+        $userdato->celular = $request->get('celular');
+        $userdato->direccion = $request->get('direccion');
+
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+
+        $user->save();
+        $userdato->save();
+
+        return redirect("/updateuser/".$iduser)->with('status','Datos Actualizados');
     }
 
     /**

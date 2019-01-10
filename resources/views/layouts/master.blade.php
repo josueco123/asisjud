@@ -41,15 +41,10 @@
     <script src="{{ asset('js/bin/push.min.js') }}"></script>
     <script src="{{ asset('js/dropdown.js') }}"></script>
     
-	<script>
-		$(document).ready(function() {
-        // Este comando es usado para inicializar algunos elementos y hacerlos funcionar de modo apropiado
-          $.material.init();
-       });
-    </script>
+	
 
     <div id="app">
-        <nav class="navbar navbar-light" style="background-color: #333A39;">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #333A39;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/')}}">
                     {{ config('app.name', 'Laravel') }}
@@ -83,34 +78,41 @@
                                     Buscar Procesos <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">  
+                                <div class="dropdown-menu " aria-labelledby="navbarDropdown">  
                                     <a class="dropdown-item" href="{{ url('radicacion')}}">
-                                        Procesos por Radicacion
-                                    </a>
-                                    <a class="dropdown-item" href="{{ url('juzgadofecha')}}">
-                                        Procesos por Juzgado
-                                    </a>
-                                    <a class="dropdown-item" href="{{ url('misprocesos')}}">
-                                        Ver mis Procesos
+                                       <p><strong>Numero de Radicacion</strong> </p>
                                     </a>
 
-    
+                                    <a class="dropdown-item" href="{{ url('juzgadofecha')}}">
+                                    <strong>Juzgado</strong>
+                                    </a>
                                 </div>
+                                
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('misprocesos')}}" >
+                                Mis Procesos
+                                </a>
                             </li>
 
 
                         <notification :userid="{{auth()->id()}}" :unreads="{{auth()->user()->unreadNotifications }}" ></notification>
                         
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                    <a  class="dropdown-item" href="{!! action('UserdatosController@edit',auth()->id()) !!}">
+                                        <p><strong>Actualizar Datos</strong></p>
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <strong>{{ __('Logout') }}</strong>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

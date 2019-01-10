@@ -5,7 +5,7 @@
 <div class="panel panel-default">
         
             <div class="card">
-                <div class="panel-heading"><h3 class="text-center">Actualizar Datos</h3></div>
+                <div class="panel-heading"><h3 class="text-center">Completar Datos</h3></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -25,7 +25,7 @@
                     
                     <div class="form-group ">
                         <label for="apellidos">Apellidos</label>
-                            <input type="text" maxlength="30" value="{!! $userdato->apellido !!}" class="form-control" id="apellido"  name="apellido" >
+                            <input type="text" maxlength="30"  class="form-control" id="apellido"  name="apellido" >
                     </div>
                 
 
@@ -38,17 +38,17 @@
                 
                     <div class="form-group">
                         <label for="cedula" > Numero de Cedula</label>        
-                            <input type="number" maxlength="15" value="{!!  $userdato->cedula !!}" class="form-control" id="cedula"  name="cedula">                      
+                            <input type="number" maxlength="15"  class="form-control" id="cedula"  name="cedula">                      
                     </div>
                     <div class="form-group">
                         <label for="celular" >Celular</label>
-                            <input type="number" maxlength="10" value="{!!  $userdato->celular !!}" class="form-control" id="celular"  name="celular">               
+                            <input type="number" maxlength="10"  class="form-control" id="celular"  name="celular">               
                     </div>
                 
 
                     <div class="form-group">
                         <label for="direccion" >Direccion</label>
-                        <input type="text" class="form-control" value="{!!  $userdato->direccion !!}" id="direccion" name="direccion"> 
+                        <input type="text" class="form-control"  id="direccion" name="direccion"> 
                     </div>
 
                 <div class="form-group">
